@@ -18,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6101BDC81CFF6B9900284706 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		6101BDC91CFF6C8700284706 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		6140AEE31CFDE76C00E9F0DD /* WorldTrotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WorldTrotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6140AEE61CFDE76C00E9F0DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6140AEEB1CFDE76C00E9F0DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -159,6 +161,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				6140AEEB1CFDE76C00E9F0DD /* Base */,
+				6101BDC81CFF6B9900284706 /* en */,
+				6101BDC91CFF6C8700284706 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
