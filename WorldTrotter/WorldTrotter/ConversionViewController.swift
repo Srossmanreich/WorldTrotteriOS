@@ -8,9 +8,10 @@
 
 import UIKit
 
-class ConversionViewController: UIViewController {
+class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var celsiusLabel: UILabel!
+    @IBOutlet var textField: UITextField!
     
     var fahrenheitValue: Double? {
         didSet {
@@ -26,15 +27,13 @@ class ConversionViewController: UIViewController {
         }
     }
     
-    @IBOutlet var textField: UITextField!
-    
-    @IBAction func fahrenheitFieldEditingChanges(textField: UITextField) {
-        if let text = textField.text, value = Double(text){
-            fahrenheitValue = value
-        } else {
-            fahrenheitValue = nil
-        }
-    }
+    let numberFormatter: NSNumberFormatter = {
+        let nf = NSNumberFormatter()
+        nf.numberStyle = .DecimalStyle
+        nf.minimumFractionDigits = 0
+        nf.maximumFractionDigits = 1
+        return nf
+    }()
     
     func updateCelsiusLabel(){
         if let value = celsiusValue {
@@ -44,15 +43,38 @@ class ConversionViewController: UIViewController {
         }
     }
     
-    let numberFormatter: NSNumberFormatter = {
-        let nf = NSNumberFormatter()
-        nf.numberStyle = .DecimalStyle
-        nf.minimumFractionDigits = 0
-        nf.maximumFractionDigits = 1
-        return nf
-    }()
-    
     @IBAction func dismissKeyboard(sender: AnyObject){
         textField.resignFirstResponder()
     }
+    
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRage range: NSRange, replacementString string: String) -> Bool {
+       
+        let existingTextHasDecimalSeparator = textField.text?.rangeOfString(".")
+        let replacementTextHasDecimalSeparator = string.rangeOfString(".")
+        
+        let letters = NSCharacterSet.letterCharacterSet()
+        
+        let existingTextHasLetters = textField.text?.rangeOfString("\(letters)")
+        
+        let replacementTextHasLetters = textField.text?.rangeOfString("\(letters)")
+        
+        if existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil {
+            return false
+        } else if existingTextHasLetters != nil && replacementTextHasLetters != nil {
+            return false
+        } else {
+            return true
+        }
+        
+    }
+    
+    @IBAction func fahrenheitFieldEditingChanges(textField: UITextField) {
+        if let text = textField.text, value = Double(text){
+            fahrenheitValue = value
+        } else {
+            fahrenheitValue = nil
+        }
+    }
+    
 }
