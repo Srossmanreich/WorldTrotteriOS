@@ -13,6 +13,13 @@ class MapViewController: UIViewController {
     
     var mapView: MKMapView!
     
+    func mapTypeChanged( segControl: UISegmentedControl){ switch segControl.selectedSegmentIndex {
+    case 0: mapView.mapType = .Standard
+    case 1: mapView.mapType = .Hybrid
+    case 2: mapView.mapType = .Satellite
+    default: break }
+    }
+    
     override func loadView() {
         
         mapView = MKMapView()
@@ -22,6 +29,9 @@ class MapViewController: UIViewController {
         let segmentedControl = UISegmentedControl(items: ["Standard","Hybrid","Satellite"])
         segmentedControl.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
         segmentedControl.selectedSegmentIndex = 0
+        
+        segmentedControl.addTarget( self, action: #selector(self.mapTypeChanged), forControlEvents: .ValueChanged)
+        
         
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(segmentedControl)
