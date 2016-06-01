@@ -77,4 +77,24 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    func timeOfDayColor()-> UIColor{
+    
+        let calendar = NSCalendar.currentCalendar()
+        let hour = calendar.component(.Hour, fromDate: NSDate())
+        
+        if hour > 18 || hour < 6 {
+            let color = UIColor(red:0.40, green:0.59, blue:0.76, alpha:1.0)
+            return color
+        } else {
+            let color = UIColor(red:0.93, green:0.86, blue:0.68, alpha:1.0)
+            return color
+        }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.backgroundColor = timeOfDayColor()
+    }
+    
+    
 }
