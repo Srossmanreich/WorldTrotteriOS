@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Convert-->
@@ -93,21 +94,52 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="90" y="348"/>
+            <point key="canvasLocation" x="1200" y="1126"/>
         </scene>
         <!--Map-->
         <scene sceneID="Xu1-sZ-egl">
             <objects>
                 <viewController id="6At-sR-U8d" customClass="MapViewController" customModule="WorldTrotter" customModuleProvider="target" sceneMemberID="viewController">
-                    <mapView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="NVT-iw-UWZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </mapView>
                     <tabBarItem key="tabBarItem" title="Map" image="MapIcon" id="VFB-z1-SUI"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Gn-MI-adP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1571" y="348"/>
+        </scene>
+        <!--WebView-->
+        <scene sceneID="KZD-GC-kgY">
+            <objects>
+                <viewController title="WebView" id="Zqe-Ps-XhW" customClass="WebViewController" customModule="WorldTrotter" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PsY-Df-qUa"/>
+                        <viewControllerLayoutGuide type="bottom" id="upp-HI-KT7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VcS-pb-Q5F">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Ec-Et-3lu">
+                                <rect key="frame" x="20" y="0.0" width="560" height="551"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="upp-HI-KT7" firstAttribute="top" secondItem="9Ec-Et-3lu" secondAttribute="bottom" id="CN5-Ib-9n5"/>
+                            <constraint firstItem="9Ec-Et-3lu" firstAttribute="leading" secondItem="VcS-pb-Q5F" secondAttribute="leadingMargin" id="Dn6-8p-S7m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="9Ec-Et-3lu" secondAttribute="trailing" id="Oqu-Qe-eof"/>
+                            <constraint firstItem="9Ec-Et-3lu" firstAttribute="top" secondItem="VcS-pb-Q5F" secondAttribute="topMargin" constant="30" id="a5i-TS-qXI"/>
+                            <constraint firstItem="9Ec-Et-3lu" firstAttribute="centerX" secondItem="VcS-pb-Q5F" secondAttribute="centerX" id="oYW-va-m4l"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Book" image="MapIcon" id="SNh-Nc-waJ"/>
+                    <connections>
+                        <outlet property="webView" destination="9Ec-Et-3lu" id="PzI-I3-W0b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hjJ-kM-OTw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1344" y="-385"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="a4S-8T-LSh">
@@ -121,6 +153,7 @@
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="41R-df-5Is"/>
                         <segue destination="6At-sR-U8d" kind="relationship" relationship="viewControllers" id="jLz-uH-khJ"/>
+                        <segue destination="Zqe-Ps-XhW" kind="relationship" relationship="viewControllers" id="cwE-G7-NAU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tSa-Id-Qmy" userLabel="First Responder" sceneMemberID="firstResponder"/>
